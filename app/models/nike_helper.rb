@@ -4,14 +4,20 @@ require 'yaml'
 # Can open public URL with this http://nikeplus.nike.com/plus/activity/running/adamloving/detail/2099952663
 class NikeHelper
 
+  def self.poll_everybody
+    User.where('nike_access_token IS NOT NULL').each do |user|
+      NikeHelper.new.poll(user)
+    end
+  end
+
   def poll(user)
     data = get_data(user)
     process_data(data, user)
     delta = get_delta(user)
-    # post_update(delta, user)
+    post_update(delta, user)
   end
 
-  # protected
+  protected
 
   def get_data(user)
     url = "https://api.nike.com/me/sport/activities?access_token=#{user.nike_access_token}"
