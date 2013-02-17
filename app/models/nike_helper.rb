@@ -8,7 +8,7 @@ class NikeHelper
     data = get_data(user)
     process_data(data, user)
     delta = get_delta(user)
-    post_update(delta, user)
+    # post_update(delta, user)
   end
 
   # protected
@@ -35,15 +35,16 @@ class NikeHelper
           steps: activity['steps']
         )
     
-        existing_sample = Sample.where('start_at = ?', sample.start_at).order('start_at').last
+        existing_samples = Sample.where('start_at >= ? AND start_at < ?', 
+          sample.start_at, sample.start_at + 1.day).order('start_at')
         
-        if !existing_sample
-          puts "NEW ONE"
+        if existing_samples.count == 0
+          puts "NEW DAY"
           sample.save
-        elsif existing_sample && sample.start_at > 24.hours.ago # is it today?
+        elsif sample.start_at > 24.hours.ago # is it today?
           puts "TODAY"
-          sample.start_at = existing_sample.end_at
-          sample.steps = sample.steps - existing_sample.steps
+          sample.start_at = existing_samples.last.end_at
+          sample.steps = sample.steps - existing_samples.sum { |s| s.steps }
           sample.save if sample.steps > 0
         end
       end
@@ -52,7 +53,7 @@ class NikeHelper
 
   def get_delta(user)
     since = user.last_report_time || 100.years.ago
-    samples = Sample.where('created_at > ?', since).order('start_at')
+    samples = Sample.where('start_at > ?', since).order('start_at')
     steps = samples.sum { |s| s.steps }
     
     {
