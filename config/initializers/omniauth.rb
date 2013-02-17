@@ -1,5 +1,5 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
-  name = 'Vanila Tent Rails App'
+  name = 'Nike poller'
   name += ' ' + Rails.env unless Rails.env == 'production'
 
   provider :tent,
@@ -9,7 +9,7 @@ Rails.application.config.middleware.use OmniAuth::Builder do
       :name => name,
       :icon => '',
       :url => ENV['ROOT_URL'],
-      :description => 'Simple demonstration tent app',
+      :description => 'Downloads Nike+ data',
       :scopes => {
         "read_posts" => "See status posts",
         "write_posts" => "Create status posts",

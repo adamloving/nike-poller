@@ -1,4 +1,4 @@
-TentAppRails::Application.routes.draw do
+NikePoller::Application.routes.draw do
 
   devise_for :users, :controllers => { :omniauth_callbacks => "api/omniauth_callbacks" }
 

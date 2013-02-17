@@ -1,4 +1,4 @@
-TentAppRails::Application.configure do
+NikePoller::Application.configure do
   config.action_mailer.default_url_options = { :host => 'tent-app-rails.heroku.com' }
 
   # Settings specified here will take precedence over those in config/application.rb

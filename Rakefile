@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-TentAppRails::Application.load_tasks
+NikePoller::Application.load_tasks

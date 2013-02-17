@@ -1,4 +1,4 @@
-TentAppRails::Application.configure do
+NikePoller::Application.configure do
   config.action_mailer.default_url_options = { :host => 'localhost:5001' }
 
   # Settings specified here will take precedence over those in config/application.rb

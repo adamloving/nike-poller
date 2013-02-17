@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '1.9.3'
 gem 'rails'
 
+gem 'foreman'
 gem 'thin'
 gem 'pg'
 gem 'tent-client', :git => 'git://github.com/tent/tent-client-ruby.git', :branch => 'master'

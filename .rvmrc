@@ -1,1 +1,1 @@
-rvm --create use 1.9.3@tent-app-rails
+rvm --create use 1.9.3@nike-poller

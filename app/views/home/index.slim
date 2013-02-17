@@ -1,7 +1,7 @@
 .row
   .span12 
     - if user_signed_in?   
-      h1 Welcome 
+      h1 Welcome
       p Thanks for stopping by #{current_user.first_name}.
 
       - if flash[:notice]
@@ -19,9 +19,5 @@
     - else
     
       h1 Hi
-      p 
-        ' This is a 
-        a href="http://github.com/adamloving/tent-app-rails" title="tent app rails" sample rails app demonstrating use of the Tent protocol
-        ' .
 
       p Please sign in using Tent.
