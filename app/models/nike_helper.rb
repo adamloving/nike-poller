@@ -17,7 +17,7 @@ class NikeHelper
     post_update(delta, user)
   end
 
-  protected
+  # protected
 
   def get_data(user)
     url = "https://api.nike.com/me/sport/activities?access_token=#{user.nike_access_token}"
