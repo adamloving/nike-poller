@@ -71,7 +71,7 @@ class NikeHelper
   def post_update(delta, user)
     return unless delta[:steps] > 0
 
-    `curl --data "from=#{user.email}&subject=#{delta[:steps]} steps steps took" #{ENV['FEATBEAT_API_URL']}`
+    `curl --data "from=#{user.email}&subject=I took #{delta[:steps]} steps" #{ENV['FEATBEAT_API_URL']}`
     user.update_attribute(:last_report_time, DateTime.now)
   end
 
